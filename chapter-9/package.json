@@ -1,0 +1,12 @@
+{
+  "name": "chapter-9",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1-nodejs-simple.js",
+  "scripts": {},
+  "author": "",
+  "dependencies": {
+    "chai": "^3.4.1",
+    "sinon": "^1.17.2"
+  }
+}

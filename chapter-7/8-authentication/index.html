@@ -1,0 +1,74 @@
+<!--
+   Copyright 2015 Packt Publishing
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<html>
+    <head>
+        <title>WS Example</title>
+    </head>
+    <body>
+        <h2>WS Example</h2>
+        <p id="output"></p>
+        <!-- SocketIO Client library -->
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="application/javascript">
+            /* Our client side code will go here */
+
+
+            function socketIO ( token ) {
+
+                var socket = io.connect( 'http://localhost:8080', {
+                    query: 'token=' + token
+                });
+
+                var output = document.getElementById( 'output' );
+
+                function logScreen( text ) {
+                    var date = new Date( ).toISOString( );
+                    line = date + " " + text + "<br/>";
+                    output.innerHTML =  line + output.innerHTML
+                }
+                
+                logScreen( 'Connecting' );
+
+                socket.on( 'connect', function( ){
+                    logScreen( 'Connection!' );
+                    socket.send( 'Hello' );
+
+                });
+                socket.on( 'message', logScreen );
+
+            }
+
+            function login( ) {
+                var request = new XMLHttpRequest();
+
+                request.onreadystatechange = function() { 
+
+                    if ( 
+                        request.readyState !== 4 ||
+                        request.status !== 200
+                    ) return 
+
+                    socketIO( request.responseText );
+                };
+
+                request.open( "GET", "/login", true ); 
+                request.send( null );
+            }
+
+            login( );
+        </script>
+    </body>
+</html>

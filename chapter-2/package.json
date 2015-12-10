@@ -1,0 +1,12 @@
+{
+  "name": "chapter-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1-nodejs-simple-server.js",
+  "scripts": {},
+  "author": "",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "router": "^1.1.3"
+  }
+}

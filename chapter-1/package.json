@@ -1,0 +1,11 @@
+{
+  "name": "chapter-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1-nodejs-setting-up-hello-world.js",
+  "scripts": {},
+  "author": "",
+  "dependencies": {
+    "chalk": "^1.1.1"
+  }
+}
